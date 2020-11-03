@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<!-- elif comment -->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html" 
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>MAIN PAGE</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+        <style>
+
+            html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code,del, dfn, em, font, img, ins, kbd, q, s, samp,
+            small, strike, sub, sup, tt, var, b, u, i, center,dl, dt, dd, ol, ul, li,fieldset, form, label, legend,table, caption, tbody, tfoot, thead, tr, commandLink {
+                margin: 0;
+                padding: 0;
+                border: 0;
+                outline: 0;
+                /*font-size: 100%;
+                vertical-align: baseline;*/
+
+            }
+            html, body {height:100%;}
+            body {line-height: 1;}
+            ol, ul {list-style: none;}
+            blockquote, q {quotes: none;}
+            blockquote:before, blockquote:after, q:before, q:after {content: '';content: none;}
+            table {border-collapse: collapse;border-spacing: 0;} 
+            textarea {overflow:auto;}
+
+
+
+            .sol{width:20%; height:700px; background: #000033;margin:40px 0; border-top-right-radius: 10px; border-bottom-right-radius: 10px; position:fixed; float:left}
+
+            .sag{width:80%; height:1000px; float:left}
+            .ust{width:100%; height: 60px; position:fixed; background: #000033;border-bottom-right-radius: 10px;float:left}
+            .alt{width:100%; height:10000px; background:#125688}
+
+            .menu{width:200px; height:400px; margin: 100px auto}
+            .menu .buttonStyle{margin:0; padding:0; list-style: none}
+            .menu .buttonStyle{display:block; width:180px; height:40px; margin: 15px 0; padding-top: 10px; padding-left: 5px; color:white; font:bold 25px thoma; text-decoration: none}
+            .menu :hover{color: #00aced;  border-radius: 10px}
+
+            .alt_ust{width:800px; height:260px; margin-left:400px; background: #000033; border-radius: 20px}
+            .middle{display:flex; overflow:hidden; flex-direction:column; height:100%; margin-left: 570px;  border-radius: 20px}
+            .textArea{width:100%; height:150px; border-radius: 8px;background: #125688; color:white; font:bold 15px thoma; border-color: #000033}
+
+
+
+
+
+        </style>
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+        <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+
+    </h:head>
+    <body style= "background-color: #125688">
+
+        <h:form enctype="multipart/form-data">
+
+
+
+            <div class="sol">
+
+                <div style="width:80px; height: 80px;"><a href="http://localhost:8080/nypProje/faces/mainPage.xhtml"><h:graphicImage style="width:300px" library="images" name="logoimg.png" /></a></div>
+
+                <div class="menu">
+                    <h:panelGrid columns="2">
+                        <i class="fa fa-home" style=" color:white"></i><h:commandLink styleClass="buttonStyle" value="HOMEPAGE" action="#{pageController.moveToMainPage()}"/>
+                        <i class="fa fa-user" style=" color:white"></i><h:commandLink styleClass="buttonStyle" value="PROFILE" action="#{pageController.moveToProfilePage()}"/>
+                        <i class="fa fa-envelope" style=" color:white"></i><h:commandLink styleClass="buttonStyle" value="MESSAGE" action="#{pageController.moveToChatPage()}"/>
+                        <i class="fa fa-cog" style=" color:white"></i><h:commandLink styleClass="buttonStyle" value="SETTINGS" action="#{pageController.moveToSettingsPage()}"/>
+                        <i class="far fa-bell" style=" color:white"></i><h:commandLink styleClass="buttonStyle" value="NOTIFICATIONS" action="#{pageController.moveToNotificationsPage()}"/>
+                        <i class="fa fa-power-off" style=" color:white"></i><h:commandLink styleClass="buttonStyle" value="LOG OUT" action="loginPage.xhtml" />
+                    </h:panelGrid>
+
+                </div>
+            </div>
+
+            <div class="sag">
+
+                <div class="ust">
+                    <div style="width:40%; height:40%; padding-top: 14px; padding-left: 420px;  color:white; float:left"><h:inputText value="#{search.valueToSearch}" onfocus="this.value = ''"  style="width:90%; height:100% "/>  
+                        <h:commandLink  id="searchButton" action="#{pageController.moveToFindUsersPage()}">
+                            <i class="fa fa-search" style=" color:white"></i>
+                        </h:commandLink></div>
+                    <div style="width:200px; height: 35px; color:white; font:bold 25px Comic; float:left; margin-left: 200px; margin-top:15px"><i class="fa fa-home"></i> MAIN PAGE</div>
+                </div>
+                <div class="alt">
+
+                    <div class="alt_ust">
+                        <div style="width:130%; height:3px; margin-top:9%;background:#125688 "></div>
+
+                        <div style=" width: 400px; height:150px;  margin-top:30px; margin-left: 200px" >
+
+                            <h:inputTextarea class="textArea" value = "#{user.status}"/>
+
+                        </div>
+
+                        <h:panelGrid  style="margin-top:20px; margin-left: 180px" columns="3">
+
+
+                            <h:inputFile value="#{photos.photo}" />
+                            <h:commandButton style="width:100px; height: 30px; margin-left:10px; border-radius: 10px; background: #00aced; border-color:white; color:white  " id="share" value="Share" actionListener="#{control.save_db_photoStatus}">
+                            </h:commandButton>
+                            <h:commandButton style="width:100px; height: 30px;margin-left:10px; border-radius: 10px; background: #00aced; border-color:white; color: white "  id="upload" value="Upload" actionListener="#{control.save_db_photoStatus}" ></h:commandButton>
+                            <h:messages style="color:white; font:bold 15px thoma;" errorClass="errorMessage" infoClass="infoMessage" layout="table" globalOnly="true" showDetail="false" showSummary="true" />
+
+                        </h:panelGrid>
+
+                        <div style="width:130%; height:3px; margin-top:3%;background:#125688 "></div>
+
+                    </div>
+
+
+                    <div id="page" class="middle">
+
+
+                        <c:forEach id="x" var="item" items="#{control.getStatusAndPhotosOfFollowingsFromDB(user.email)}">
+
+
+                            <ui:fragment rendered="#{item.isPhoto}">
+
+                                <div id="anaPhoto" style="width:400px; height:700px; margin:20px auto">
+
+                                    <div id="ppNick" style="width:370px; height:73px; background: #80ccff; margin:0 auto; border-top-right-radius: 20px; border-top-left-radius: 20px">
+                                        <div id="pp" style="width:65px; height:65px; margin-left:20px; margin-top:2px; float:left; background: black; border-radius: 50px">
+                                            <img src="data:image/jpg;base64,#{controlProfile.showProfilePhoto(item.id)}" style="width:65px; height:65px; border-radius: 50px" />
+                                        </div>
+                                        <div id="nickname" style="width:200px; height:30px; margin-left:5px; margin-top: 17px; float:left;"><h:commandLink action="#{friend.moveToProfilePageOfAnotherUser_wthNick(item.nickname)}"><h:outputText style="  color: white; font:bold 20px thoma" value="#{item.nickname}" /></h:commandLink></div>
+                                    </div>
+                                    <div id="photoPart" style="width:370px; height:500px; margin:0 auto;  background:black">
+
+
+                                        <img src="data:image/jpg;base64,#{item.url}" style="width:370px; height:500px;" />
+
+                                        <div id="doubleLikeCount" style="width:35px; height: 22px;  position:absolute; margin-top: -24px; border-top-left-radius: 10px; border-top-right-radius: 10px; margin-left:95px; float:left; background: #80ccff"><h:outputText id="m" style="margin-left:8px; color:white" value="#{item.doubleLikeCount}" /></div>
+                                        <div id="likeCount" style="width:35px; height: 22px; position:absolute; margin-top: -24px; border-top-left-radius: 10px; border-top-right-radius: 10px; margin-left: 155px;  float:left; background: #80ccff"><h:outputText style="margin-left:8px; color:white" value="#{item.likeCount}"/></div>
+                                        <div id="unlikeCount" style="width:35px; height: 22px; position:absolute; margin-top: -24px; border-top-left-radius: 10px; border-top-right-radius: 10px; margin-left: 218px; float:left; background: #80ccff"><h:outputText style="margin-left:8px; color:white" value="#{item.unlikeCount}"/></div>
+
+                                    </div>
+
+
+
+                                    <div id="buttons" style="width:370px; height:55px;  margin:0 auto; background: #80ccff; border-bottom-left-radius:20px; border-bottom-right-radius: 20px">
+                                        <div  style="width:40px; height:40px; margin-left:95px; margin-top: 7px; float:left; background: red; border-radius: 48px "> 
+                                            <h:commandLink action="#{control.saveDBlikeunlike(1, item.picStatusId)}" ><i class="fas fa-grin-hearts" style="  font-size: 40px; color:#FFD700" />
+
+                                            </h:commandLink>
+
+                                        </div>
+                                        <div  style="width:40px; height:40px; margin-left:20px; margin-top: 7px; float:left; "> 
+                                            <h:commandLink  action="#{control.saveDBlikeunlike(2,item.picStatusId)}"><i class="fas fa-heart" style=" font-size: 40px; color:red" /> </h:commandLink>
+                                        </div>
+                                        <div  style="width:40px; height:40px; margin-left:20px; margin-top: 7px; float:left; "> 
+                                            <h:commandLink action="#{control.saveDBlikeunlike(3, item.picStatusId)}" ><i class="fas fa-heart-broken" style=" font-size: 40px; color:red" /> </h:commandLink>
+                                        </div>
+                                    </div>
+                                    <div id="date" style="width:150px; height:30px; margin: 0 150px"><h:outputText style="  color: white; font:bold 10px thoma" value="#{item.dateTime}" /></div>
+
+
+                                </div>
+
+
+                            </ui:fragment>
+
+                            <ui:fragment rendered="#{item.isStatus}">
+
+                                <div id="anaStatus" style="width:600px; height:370px; margin:10px auto; border-radius: 20px; background: #e6f5ff">
+
+                                    <div id="ppNick1" style="width:600px; height:73px; background: #80ccff; margin:0 auto; border-top-right-radius: 20px; border-top-left-radius: 20px">
+                                        <div id="pp1" style="width:65px; height:65px; margin-left:20px; margin-top:2px; float:left; background: black; border-radius: 50px">
+                                            <img src="data:image/jpg;base64,#{controlProfile.showProfilePhoto(item.id)}" style="width:65px; height:65px; border-radius: 50px" />
+                                        </div>
+                                        <div id="nickname1" style="width:200px; height:30px; margin-left:5px; margin-top: 17px; float:left;"><h:commandLink action="#{friend.moveToProfilePageOfAnotherUser_wthNick(item.nickname)}"><h:outputText style="  color: white; font:bold 20px thoma" value="#{item.nickname}" /></h:commandLink></div>
+                                    </div>
+
+                                    <div id="messagePart" style="width:400px; height:130px; margin:30px auto; background:#e6f5ff"><h:outputText value="#{item.status}" /></div>
+
+                                    <div id="date1" style="width:150px; height:30px; margin: 0 250px"><h:outputText style="  color: black; font:bold 10px thoma; border-width: 0.5px; border-style: solid; border-color: black " value="#{item.dateTime}" /></div>
+
+                                    
+                                    <div id="likeUnlikeCount" style="width:600px; height:22px; margin:0 auto; background: #e6f5ff">
+                                        <div id="doubleLikeCount" style="width:35px; height: 22px; border-top-left-radius: 10px; border-top-right-radius: 10px; margin-left:215px; float:left; background: #80ccff"><h:outputText style="margin-left:8px; color:white" value="#{item.doubleLikeCount}"/></div>
+                                        <div id="likeCount" style="width:35px; height: 22px; border-top-left-radius: 10px; border-top-right-radius: 10px; margin-left: 26px;  float:left; background: #80ccff"><h:outputText style="margin-left:8px; color:white" value="#{item.likeCount}"/></div>
+                                        <div id="unlikeCount" style="width:35px; height: 22px; border-top-left-radius: 10px; border-top-right-radius: 10px; margin-left: 26px; float:left;background: #80ccff"><h:outputText style="margin-left:8px; color:white" value="#{item.unlikeCount}"/></div>
+                                    </div>
+                                    
+                                    <div id="buttonsAna" style="width:600px; height:55px;  margin:0 auto; background: #80ccff; border-bottom-left-radius:20px; border-bottom-right-radius: 20px">
+                                        <div id="buttons1" style="width:215px; height:55px; margin:0 auto">
+                                            <div  style="width:40px; height:40px; margin-left:20px; margin-top: 7px; float:left; background: red; border-radius: 48px "> 
+                                                <h:commandLink action="#{control.saveDBlikeunlike(1, item.picStatusId)}"><i class="fas fa-grin-hearts" style="  font-size: 40px; color:#FFD700" />
+
+
+
+                                                </h:commandLink>
+                                            </div>
+                                            <div  style="width:40px; height:40px; margin-left:20px; margin-top: 7px; float:left; ">
+                                                <h:commandLink action="#{control.saveDBlikeunlike(2, item.picStatusId)}" > <i class="fas fa-heart" style=" font-size: 40px; color:red" /> </h:commandLink>
+                                            </div>
+                                            <div  style="width:40px; height:40px; margin-left:20px; margin-top: 7px; float:left; "> 
+                                                <h:commandLink action="#{control.saveDBlikeunlike(3, item.picStatusId)}" ><i class="fas fa-heart-broken" style=" font-size: 40px; color:red" /></h:commandLink>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+
+
+
+                            </ui:fragment>
+
+                        </c:forEach>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </h:form>
+
+
+
+
+    </body>
+</html>

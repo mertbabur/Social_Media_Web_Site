@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+       
+        
+        <title>LOGIN</title>
+        <style>
+            
+            .kayitForm{width:550px; height:auto; margin:100px auto}
+            
+            .commandButton{width:510px; height:50px; background: #00aced; border:none; color: white; font: bold 15px thoma; border-radius:30px; margin:10px 0}
+            .commandButton:hover{background: black}
+            .mailInput{width:400px;height:50px; border-radius: 5px}
+            .passwordInput{width:400px;height:50px; border-radius: 5px}
+            
+        </style>
+        
+        
+    </h:head>
+    <h:body style= "background-color: #125688">
+        
+             <h:form>
+                 <div class="kayitForm">
+                     <h:outputLink value="http://localhost:8080/nypProje/faces/loginPage.xhtml"><h:graphicImage style="width:500px; margin:0 30px" library="images" name="logoimg.png" /></h:outputLink>
+                    <h:panelGrid columns="2" style="float:left">
+                        <h:outputText value="E-Mail : " style="font: bold 20px thoma; color:white"/>
+                        <h:inputText value="#{user.email}" class="mailInput" id="mail"  required="true" requiredMessage="Please enter your mail ..." style="background: #125688;font-size: 17px;color: whitesmoke;"/>
+                     
+                        <h:outputText value="Password : " style="font: bold 20px thoma; color:white"/>
+                        <h:inputSecret value="#{user.password}" class="passwordInput" id="password"  required="true" requiredMessage="Please enter your password ..." style="background: #125688;font-size: 17px;color: whitesmoke;" />
+                        
+                    </h:panelGrid>
+                     
+                     <h:commandButton class="commandButton" id="signIn" value="LOGIN" action="#{user.login()}" />
+                      <h:outputLink style="float:left; margin:10px 200px; color: #00aced; font: bold 15px thoma; text-decoration: none " value="http://localhost:8080/nypProje/faces/registerPage.xhtml" >Sign in ROLLIC</h:outputLink>
+                      <div style="width:300px; height: 30px; color:white; font:bold 15px thoma; margin-left: 120px">
+                          <h:messages errorClass="errorMessage" infoClass="infoMessage" layout="table" globalOnly="true" showDetail="false" showSummary="true" /></div>
+                 </div> 
+                 
+                    
+                
+            </h:form>
+            
+        
+        
+       
+        
+        
+    </h:body>
+</html>
+

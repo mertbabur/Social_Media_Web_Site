@@ -1,0 +1,65 @@
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code,del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, sub, sup, tt, var, b, u, i, center,dl, dt, dd, ol, ul, li,fieldset, form, label, legend,table, caption, tbody, tfoot, thead, tr, commandLink {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+
+}
+html, body {height:100%;}
+body {line-height: 1;}
+ol, ul {list-style: none;}
+blockquote, q {quotes: none;}
+blockquote:before, blockquote:after, q:before, q:after {content: '';content: none;}
+table {border-collapse: collapse;border-spacing: 0;} 
+textarea {overflow:auto;}
+
+
+
+.sol{width:20%;height:100%; background: #000033;margin:40px 0;  position:fixed; float:left}
+
+.sag{width:60%;
+     height:100%;
+     background-color:#000033;
+     float:left;
+     color:white;
+     margin-left:87%;
+     margin-top:50px;
+     padding-top: 20px;
+     position:fixed;
+
+}
+.messagePanel{
+    width:950px; margin-left:22%; margin-top:8%; height:600px; background-color:#66b3ff; float:left; padding:50px; border-radius:20px; font:bold 20px thoma;
+}
+
+.seeChatLink{
+    font: bold 20px thoma; color:blue;text-decoration: none; float: right;
+}
+.friendsList{
+    height:40px; width:430px; background-color:white; border-color:lightblue; color:black; font: bold 20px thoma; 
+}
+.sendMessageButton{
+    height:32px; font: bold 20px thoma; border:none; background-color:white; margin-left: 1px; border-radius: 25px;
+}
+.inputMessage{
+    height:32px; border: none; margin-bottom: 20px; width:32%;
+}
+.sendMessageForm{
+    margin-bottom: 20px; margin: 0 0; float: bottom;
+}
+.output{
+    font:bold 20px thoma;
+}
+.ust{width:100%; height: 60px; position:fixed; background: #000033;border-bottom-right-radius: 10px}
+
+.menu{width:200px; height:400px; margin: 100px auto}
+.menu .buttonStyle{margin:0; padding:0; list-style: none}
+.menu .buttonStyle{display:block; width:180px; height:40px; margin: 15px 0; padding-top: 10px; padding-left: 5px; color:white; font:bold 25px thoma; text-decoration: none}
+.menu :hover{color: #00aced;  border-radius: 10px}
+.commandButton{height:40px; width:200px; background:#F5F5F5; border:none; color:black; font: bold 20px thoma; border-radius:15px; margin-left:15px; margin-top:30px;}
+.commandButton:hover{background:#91969b}
+.output{
+    font:bold 20px thoma;
+    margin-left:30px;
+}

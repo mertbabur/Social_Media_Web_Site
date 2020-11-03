@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- mert test -->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <meta charset="utf-8"/>
+        <title>REGISTER</title>
+        <style>
+            .output{
+                font:bold 20px thoma;
+                margin-left:80px;
+            }
+            .input{
+                width:300px;height:30px;border-radius:5px;
+            }
+            .form{
+                width:960px; 
+                height:auto;
+                margin: auto;
+            }
+            .middle{
+                width:60%;
+                height:50%;
+                background-color:#101232;
+                float:left;
+                color:white;
+                border-radius:20px;
+                margin-left:10%;
+                padding:60px;
+            }
+            body{background-color:#125688;}
+
+        </style>
+    </h:head>
+    <h:body>
+        <br/><br/>
+        <h:form>
+            <div class="form">
+                <h:outputLink value="http://localhost:8080/nypProje/faces/loginPage.xhtml"><h:graphicImage library="images" name="logoimg.png" style="width:300px; height:150px; margin:0 300px;"/></h:outputLink>
+                <div class="middle">
+                    <h:panelGrid columns="2">
+
+                        <h:outputText class="output" value="Name: "/>
+                        <h:inputText id="firstNameRegister" class="input" value="#{user.firstName}" required="true" requiredMessage="Please enter your name"/>
+                        <h:outputText class="output" value="Surname: "/>
+                        <h:inputText id="lastNameRegister" class="input" value="#{user.lastName}" required="true" requiredMessage="Please enter your surname"/>
+                        <h:outputText class="output" value="E-mail"/>
+                        <h:inputText id="emailRegister" class="input" value="#{user.email}" required="true" validatorMessage="invalid e-mail" requiredMessage="Please enter your email">
+                            <f:validateRegex pattern="^[A-Za-z0-9-+]+(\.[A-Za-z0-9+-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(.[A-Za-z]{2,})$"/>
+                        </h:inputText>
+                        <h:outputText class="output" value="Phone: "/>
+                        <h:inputText id="phoneNumberRegister" class="input" value="#{user.phoneNumber}"  />
+                        <h:outputText class="output" value="Nickname:  "/>
+                        <h:inputText id="nickNameRegister" class="input" value="#{user.nickname}" required="true" requiredMessage="Please enter your nickname" />
+                        <h:outputText class="output" value="Where you live:  "/>
+                        <h:inputText id="liveRegister" class="input" value="#{user.live}" required="true" requiredMessage="Please enter where you live" />
+                        <h:outputText class="output" value="Password: "/>
+                        <h:inputSecret id="passwordRegister" class="input" value="#{user.password}" required="true" requiredMessage="Please enter your password"/>
+                        <h:outputText class="output" />
+                        <h:selectOneRadio value="#{user.gender}" style="font:bold 20px thoma" required="true" requiredMessage="Please enter your gender">
+                            <f:selectItem itemLabel="Female" itemValue="Female"/>
+                            <f:selectItem itemLabel="Male" itemValue="Male"/>
+                            <f:selectItem itemLabel="Other" itemValue="Other"/>
+                        </h:selectOneRadio>
+                    </h:panelGrid>
+                    <h:commandButton  value="REGISTER" style="margin-top:30px; width:510px; height:50px; background: #00aced; border:none; color: white; font: bold 15px thoma; border-radius:30px; margin-left:40px" action="#{user.register()}"/>
+                    <div style="width:300px; height: 30px; color:white; font:bold 15px thoma; margin-left: 200px">
+                        <h:messages errorClass="errorMessage" infoClass="infoMessage" layout="table" globalOnly="true" showDetail="false" showSummary="true" /></div>
+                </div>
+            </div>
+        </h:form>
+    </h:body>
+</html>
+

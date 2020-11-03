@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html" 
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <head>
+        <title>USER FAVORITE</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+        <style>
+
+            html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code,del, dfn, em, font, img, ins, kbd, q, s, samp,
+            small, strike, sub, sup, tt, var, b, u, i, center,dl, dt, dd, ol, ul, li,fieldset, form, label, legend,table, caption, tbody, tfoot, thead, tr, commandLink {
+                margin: 0;
+                padding: 0;
+                border: 0;
+                outline: 0;
+
+            }
+            html, body {height:100%;}
+            body {line-height: 1;}
+            ol, ul {list-style: none;}
+            blockquote, q {quotes: none;}
+            blockquote:before, blockquote:after, q:before, q:after {content: '';content: none;}
+            table {border-collapse: collapse;border-spacing: 0;} 
+            textarea {overflow:auto;}
+
+
+
+            .sol{width:20%;height:1000px; background: #000033;margin:40px 0; position:fixed; float:left}
+
+            .sag{width:60%;
+                 height:1000px;
+                 background-color:#000033;
+                 float:left;
+                 color:white;
+                 margin-left:80%;
+                 margin-top:270px;
+                 padding:30px;
+                 position:fixed;
+            }
+            .sagust{
+                width:60%;
+                height:1000px;
+                background-color:#000033;
+                float:left;
+                color:white;
+                margin-left:80%;
+                margin-top:50px;
+                padding:40px;
+                position:fixed;  
+            }
+            .output{
+                font:bold 20px thoma;
+            }
+            .ust{width:100%; height: 60px; position:fixed; background: #000033;}
+
+            .menu{width:200px; height:400px; margin: 100px auto}
+            .menu .buttonStyle{margin:0; padding:0; list-style: none}
+            .menu .buttonStyle{display:block; width:180px; height:40px; margin: 15px 0; padding-top: 10px; padding-left: 5px; color:white; font:bold 25px thoma; text-decoration: none}
+            .menu :hover{color: #00aced;  border-radius: 10px}
+            .commandButton{height:40px; width:200px; background:#F5F5F5; border:none; color:black; font: bold 20px thoma; border-radius:15px; margin-left:15px; margin-top:30px;}
+            .commandButton2{height:30px; width:100px; background:black; color:#F5F5F5; border:none; font: bold 20px thoma; border-radius:5px; margin-top:10px; border-color:white;}
+            .commandButton:hover{background:#91969b}
+            .output{
+                font:bold 20px thoma;
+                margin-left:15px;
+            }
+            .middle{width:450px;; margin-left:500px; margin-top:120px; height:250px; background-color:#FFFAFA; color:black; float:left; padding:50px; border-radius:20px; font:bold 20px thoma; }
+
+
+
+        </style>
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+        <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+
+    </head>
+    <body style="background: url('resources/images/background.gif')">
+
+        <h:form enctype="multipart/form-data">
+            <div class="sol">            
+                <div style="width:80px; height: 80px;"><a href="http://localhost:8080/nypProje/faces/mainPage.xhtml"><h:graphicImage style="width:300px" library="images" name="logoimg.png" /></a></div>
+
+                <div class="menu">
+                    <h:panelGrid columns="2">
+                        <i class="fa fa-home" style=" color:white"></i><h:commandLink styleClass="buttonStyle" value="HOMEPAGE" action="#{pageController.moveToMainPage()}"/>
+                        <i class="fa fa-user" style=" color:white"></i><h:commandLink styleClass="buttonStyle" value="PROFILE" action="#{pageController.moveToProfilePage()}"/>
+                        <i class="fa fa-envelope" style=" color:white"></i><h:commandLink styleClass="buttonStyle" value="MESSAGE" action="#{pageController.moveToChatPage()}"/>
+                        <i class="fa fa-cog" style=" color:white"></i><h:commandLink styleClass="buttonStyle" value="SETTINGS" action="#{pageController.moveToSettingsPage()}"/>
+                        <i class="far fa-bell" style=" color:white"></i><h:commandLink styleClass="buttonStyle" value="NOTIFICATIONS" action="#{pageController.moveToNotificationsPage()}"/>
+                        <i class="fa fa-power-off" style=" color:white"></i><h:commandLink styleClass="buttonStyle" value="LOG OUT" action="loginPage.xhtml" />
+                    </h:panelGrid>
+
+                </div>
+            </div>
+
+
+
+            <div class="ust">
+
+                <div style="width:40%; height:40%; padding-top: 14px; padding-left: 420px;  color:white; float:left"><h:inputText value=" " style="width:90%; height:100% "/>  
+                    <h:commandLink  id="searchButton" action="#{pageController.moveToFindUsersPage()}"> 
+                        <i class="fa fa-search"></i>
+                    </h:commandLink>
+                </div>
+                <div style="width:250px; height: 35px; color:white; font:bold 25px Comic; float:left; margin-left: 100px; margin-top:15px"><i class="fa fa-user"></i> PROFILE PAGE</div>
+            </div>
+
+            <div class="sagust">
+                <div id="pp" style="width:120px; height:120px; margin-left:25px; float:left; background:#000033; border-radius: 60px">
+                    <img src="data:image/jpg;base64,#{controlProfile.showProfilePhoto()}" style="margin-left:25px; width:120px; height:120px; border-radius: 60px" />
+                    <h:commandButton style="margin-left:5px; width:150px; height: 30px;margin-left:10px; border-radius: 10px; background:#000033; border-color:white; color: white "  id="upload" value="Change Profil Photo" action="#{controlProfile.save_db_profilePhoto()}" ></h:commandButton>
+                    <h:inputFile value="#{photos.photo}" style="width:150px; margin-left:10px; " /> 
+                    <h:messages style="color:white; font:bold 15px thoma;" errorClass="errorMessage" infoClass="infoMessage" layout="table" globalOnly="true" showDetail="false" showSummary="true" />
+                </div>
+            </div>
+            <div class="sag">
+                <h:outputText class="output" value="#{user.information('firstName')} #{user.information('lastName')}"/><br/> 
+                <h:outputText class="output" value="@#{user.information('nickName')}"/><br/> 
+
+                <h:commandButton value="#{userinfo.getFollowersCount(user.email)} Followers"  action="#{pageController.moveToFollowersPage()}" style="height:40px; width:120px; background:#F5F5F5; border:none; color:black; font: bold 18px thoma; border-radius:15px;margin-top:30px;"/>
+                <h:commandButton value="#{userinfo.getFollowingCount(user.email)} Following" action="#{pageController.moveToFollowingPage()}" style="height:40px; width:120px; background:#F5F5F5; border:none; color:black; font: bold 18px thoma; border-radius:15px; margin-left:5px; margin-top:30px;"/><br/>
+                <h:commandButton class="commandButton" value="Work and Education" action="#{pageController.moveToWorkAndEducationPage()}"/><br/>
+                <h:commandButton class="commandButton" value="Introduce yourself" action ="#{pageController.moveToIntroduceYourselfPage()}"/><br/>
+                <h:commandButton class="commandButton" value="What do you like?" action="#{pageController.moveToUsersFavoritePage()}"/><br/>
+                <h:commandButton class="commandButton" value="See your information" action="#{pageController.moveToSeeInformationPage()}"/><br/>
+
+
+            </div>
+            <div class="middle">
+                <h:panelGrid columns="2">
+                    <h:outputText value="WHAT DO YOU LIKE?"/><br/><br/>
+                    <h:outputText value="What are you favorite team?"/>
+                    <h:inputText id="live" value="#{userinfo.team}"/>
+                    <h:outputText value="What are you favorite music?"/>
+                    <h:inputText id="form" value="#{userinfo.music}"/>
+                    <h:outputText value="What are you favorite singer:"/>
+                    <h:inputText value="#{userinfo.singer}"/>
+                    <h:outputText value="What are you favorite film"/>
+                    <h:inputText value="#{userinfo.film}"/>
+                    <h:outputText value="What are you favorite series"/>
+                    <h:inputText value="#{userinfo.series}"/>
+                    <h:outputText value="What are you favorite book"/>
+                    <h:inputText value="#{userinfo.book}"/>
+
+                    <h:commandButton class="commandButton2" value="SAVE" action="#{userinfo.addUserFavorite(user)}"/>
+
+                </h:panelGrid>
+
+            </div>
+
+        </h:form>
+
+
+
+    </body>
+</html>

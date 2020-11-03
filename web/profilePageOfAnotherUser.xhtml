@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html" 
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <head>
+        <title>PROFILE</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+        <style>
+
+            html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code,del, dfn, em, font, img, ins, kbd, q, s, samp,
+            small, strike, sub, sup, tt, var, b, u, i, center,dl, dt, dd, ol, ul, li,fieldset, form, label, legend,table, caption, tbody, tfoot, thead, tr, commandLink {
+                margin: 0;
+                padding: 0;
+                border: 0;
+                outline: 0;
+
+            }
+            html, body {height:100%;}
+            body {line-height: 1;}
+            ol, ul {list-style: none;}
+            blockquote, q {quotes: none;}
+            blockquote:before, blockquote:after, q:before, q:after {content: '';content: none;}
+            table {border-collapse: collapse;border-spacing: 0;} 
+            textarea {overflow:auto;}
+
+
+
+            .sol{width:20%;height:1000px; background: #000033;margin:40px 0;position:fixed; float:left}
+
+            .sag{width:15%;
+                 height:2000px;
+                 background-color:#000033;
+                 color:white;
+                 float: right;
+                 padding-top: 100px;
+                 padding-left: 50px;
+                 padding-right: 50px;
+
+            }
+            .output{
+                font:bold 20px thoma;
+            }
+            .ust{width:100%; height: 60px; position:fixed; background: #000033;}
+
+            .menu{width:200px; height:400px; margin: 100px auto}
+            .menu .buttonStyle{margin:0; padding:0; list-style: none}
+            .menu .buttonStyle{display:block; width:180px; height:40px; margin: 15px 0; padding-top:10px; padding-left: 5px; color:white; font:bold 25px thoma; text-decoration: none}
+            .menu :hover{color: #00aced;  border-radius: 10px}
+            .commandButton{height:40px; width:200px; background:#F5F5F5; border:none; color:black; font: bold 20px thoma; border-radius:15px; margin-left:15px; margin-top:30px;}
+            .commandButton:hover{background:#91969b}
+            .output{
+                font:bold 20px thoma;
+                margin-left:15px;
+            }
+            .followButton{font:bold 15px thoma; border-radius: 50px;  width:150px; height:30px; background-color: #00aced; color: white; margin: 20px 0; border-color:whitesmoke;}
+            .userTable {   
+                border-collapse:collapse;
+                border:1px solid #000000;
+            }
+
+            .userTableHeader {
+                text-align:center;
+                background:none repeat scroll 0 0 #000033;
+                border-bottom:1px solid #BBBBBB;  
+                padding:16px;
+                color:white;
+            }
+
+            .userTableOddRow {
+                text-align:center;
+                background:none repeat scroll 0 0 white;
+                border-top:1px solid #BBBBBB;
+                color:black;
+
+            }
+
+            .userTableEvenRow {
+                text-align:center;
+                background:none repeat scroll 0 0 #F9F9F9;
+                border-top:1px solid #BBBBBB
+
+            }
+        </style>
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+        <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+
+    </head>
+    <body style="background: url('resources/images/background.gif')">
+
+        <h:form>
+            <div class="sol">            
+                <div style="width:80px; height: 80px;"><a href="http://localhost:8080/nypProje/faces/mainPage.xhtml"><h:graphicImage style="width:300px" library="images" name="logoimg.png" /></a></div>
+
+                <div class="menu">
+                    <h:panelGrid columns="2">
+                        <i class="fa fa-home" style=" color:white"></i><h:commandLink styleClass="buttonStyle" value="HOMEPAGE" action="#{pageController.moveToMainPage()}"/>
+                        <i class="fa fa-user" style=" color:white"></i><h:commandLink styleClass="buttonStyle" value="PROFILE" action="#{pageController.moveToProfilePage()}"/>
+                        <i class="fa fa-envelope" style=" color:white"></i><h:commandLink styleClass="buttonStyle" value="MESSAGE" action="#{pageController.moveToChatPage()}"/>
+                        <i class="fa fa-cog" style=" color:white"></i><h:commandLink styleClass="buttonStyle" value="SETTINGS" action="#{pageController.moveToSettingsPage()}"/>
+                        <i class="far fa-bell" style=" color:white"></i><h:commandLink styleClass="buttonStyle" value="NOTIFICATIONS" action="#{pageController.moveToNotificationsPage()}"/>
+                        <i class="fa fa-power-off" style=" color:white"></i><h:commandLink styleClass="buttonStyle" value="LOG OUT" action="loginPage.xhtml" />
+                    </h:panelGrid>
+
+                </div>
+            </div>
+
+
+
+            <div class="ust">
+
+                <div style="width:40%; height:40%; padding-top: 14px; padding-left: 420px;  color:white; float:left"><h:inputText value="#{search.valueToSearch}" onfocus="this.value = ''"  style="width:90%; height:100% "/> 
+                    <h:commandLink  id="searchButton" action="#{pageController.moveToFindUsersPage()}">
+                        <i class="fa fa-search" style=" color:white"></i>
+                    </h:commandLink></div>
+                <div style="width:200px; height: 35px; color:white; font:bold 23px Comic; float:left; margin-left: 150px; margin-top:15px"><i class="fa fa-user"></i> PROFILE PAGE</div>
+            </div>
+
+            <div class="sag">
+
+                <img src="data:image/jpg;base64,#{controlProfile.showFriendProfilePhoto()}" style="width:90px; height:90px; float:left; border-radius: 50px" />
+                <h:outputText class="output" value="#{friend.firstName}"/><br/>
+                <h:outputText class="output" value="#{friend.lastName}"/><br/> 
+                <h:outputText class="output" value="#{friend.nickname}"/><br/> 
+                <br></br>
+                <br></br>
+                <h:commandButton class="followButton" rendered="#{!friend.isFollowing(user.email, friend.nickname)}" value="+ Follow" action="#{friend.addFriend(user.email, friend.nickname)}"/>
+                <h:commandButton class="followButton" rendered="#{friend.isFollowing(user.email, friend.nickname)}" value="Unfollow" action="#{friend.deleteFriend(user.email, friend.nickname)}"/>
+                <br/>
+                <br></br>
+                <br></br>
+                <h:outputText value="  #{userinfo.getFollowersCount(friend.email)} Followers   " style="white-space: pre-wrap; height:40px; width:120px; background:#F5F5F5; border:none; color:black; font: bold 18px thoma; border-radius:15px;margin-top:30px;"/>
+                <h:outputText value="  #{userinfo.getFollowingCount(friend.email)} Following   " style="white-space: pre-wrap; height:40px; width:120px; background:#F5F5F5; border:none; color:black; font: bold 18px thoma; border-radius:15px; margin-left:5px; margin-top:30px;"/><br/>
+
+
+                <h:dataTable value ="#{userinfo.getFriendWorkAndEducationFromtable(friend)}" var="user_workandedu" styleClass = "userTable"
+                             headerClass = "userTableHeader"
+                             rowClasses = "userTableOddRow,userTableEvenRow">
+                    <h:column>
+                        <f:facet name ="header">
+                            Work
+                        </f:facet>
+                        <h:outputText value="#{user_workandedu.work}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name ="header">
+                            University
+                        </f:facet>
+                        <h:outputText value="#{user_workandedu.university}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name ="header">
+                            High School
+                        </f:facet>
+                        <h:outputText value="#{user_workandedu.highschool}"/>
+                    </h:column>
+
+                </h:dataTable>
+                <br/><br/>
+                <h:dataTable value ="#{userinfo.getFriendIntroduceYourselfFromtable(friend)}" var="user_intryour" styleClass = "userTable"
+                             headerClass = "userTableHeader"
+                             rowClasses = "userTableOddRow,userTableEvenRow">
+                    <h:column>
+                        <f:facet name ="header">
+                            Live
+                        </f:facet>
+                        <h:outputText value="#{user_intryour.live}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name ="header">
+                            Hometown
+                        </f:facet>
+                        <h:outputText value="#{user_intryour.from}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name ="header">
+                            Relationship
+                        </f:facet>
+                        <h:outputText value="#{user_intryour.relationship}"/>
+                    </h:column>
+                </h:dataTable>
+                <br/><br/>
+
+                <h:dataTable value ="#{userinfo.getFriendFavoriteFromtable(friend)}" var="user_userfav" styleClass = "userTable"
+                             headerClass = "userTableHeader"
+                             rowClasses = "userTableOddRow,userTableEvenRow">
+                    <h:column>
+                        <f:facet name ="header">
+                            Favorite Team
+                        </f:facet>
+                        <h:outputText value="#{user_userfav.team}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name ="header">
+                            Favorite Music
+                        </f:facet>
+                        <h:outputText value="#{user_userfav.music}"/>
+                    </h:column>
+                </h:dataTable>
+                <br/><br/>
+                <h:dataTable value ="#{userinfo.getFriendFavoriteFromtable(friend)}" var="user_userfav" styleClass = "userTable"
+                             headerClass = "userTableHeader"
+                             rowClasses = "userTableOddRow,userTableEvenRow">
+                    <h:column>
+                        <f:facet name ="header">
+                            Favorite Singer
+                        </f:facet>
+                        <h:outputText value="#{user_userfav.singer}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name ="header">
+                            Favorite Film
+                        </f:facet>
+                        <h:outputText value="#{user_userfav.film}"/>
+                    </h:column>
+                </h:dataTable>
+                <br/><br/>
+                <h:dataTable value ="#{userinfo.getFriendFavoriteFromtable(friend)}" var="user_userfav" styleClass = "userTable"
+                             headerClass = "userTableHeader"
+                             rowClasses = "userTableOddRow,userTableEvenRow">
+                    <h:column>
+                        <f:facet name ="header">
+                            Favorite Series
+                        </f:facet>
+                        <h:outputText value="#{user_userfav.series}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name ="header">
+                            Favorite Book
+                        </f:facet>
+                        <h:outputText value="#{user_userfav.book}"/>
+                    </h:column>
+                </h:dataTable>
+
+
+            </div>
+            <div style="width :auto; height: 0px; float: top; padding-bottom: 100px;"/>
+            <div id="orta" style="display:flex; overflow:hidden; flex-direction:column; height:100%; margin-left: 400px; float: left; background: #4682B4; border-radius: 20px">
+
+                <c:forEach id="x" var="item" items="#{controlProfile.getProfileArrOfAnotherUser(friend.nickname)}">
+                    <ui:fragment rendered="#{item.isStatus}">
+
+                        <div id="anaStatus" style="width:600px; height:370px; margin:10px auto; background: #4682B4">
+
+                            <div id="ppNick1" style="width:600px; height:73px; background: #1E90FF; margin:0 auto; border-top-right-radius: 20px; border-top-left-radius: 20px">
+                                <div id="pp1" style="width:65px; height:65px; margin-left:20px; margin-top:2px; float:left; background: black; border-radius: 50px">
+                                    <img src="data:image/jpg;base64,#{controlProfile.showFriendProfilePhoto()}" style="width:65px; height:65px; border-radius: 50px" />
+                                </div>
+                                <div id="nickname1" style="width:200px; height:30px; margin-left:5px; margin-top: 17px; float:left;"><h:outputText style="  color: white; font:bold 20px thoma" value="#{item.nickname}" /></div>
+                            </div>
+
+                            <div id="messagePart" style="width:400px; height:130px; margin:30px auto; background:#4682B4"><h:outputText style="color:white" value="#{item.status}" /></div>
+
+                            <div id="likeUnlikeCount" style="width:600px; height:22px; margin:0 auto; background: #4682B4">
+                                <div id="doubleLikeCount" style="width:35px; height: 22px; border-top-left-radius: 10px; border-top-right-radius: 10px; margin-left:215px; float:left; background: #1E90FF"><h:outputText style="margin-left:8px; color:white" value="#{item.doubleLikeCount}"/></div>
+                                <div id="likeCount" style="width:35px; height: 22px; border-top-left-radius: 10px; border-top-right-radius: 10px; margin-left: 26px;  float:left; background: #1E90FF"><h:outputText style="margin-left:8px; color:white" value="#{item.likeCount}"/></div>
+                                <div id="unlikeCount" style="width:35px; height: 22px; border-top-left-radius: 10px; border-top-right-radius: 10px; margin-left: 26px; float:left;background: #1E90FF"><h:outputText style="margin-left:8px; color:white" value="#{item.unlikeCount}"/></div>
+                            </div>
+
+                            <div id="buttonsAna" style="width:600px; height:55px;  margin:0 auto; background: #1E90FF; border-bottom-left-radius:20px; border-bottom-right-radius: 20px">
+                                <div id="buttons1" style="width:215px; height:55px; margin:0 auto">
+                                    <div  style="width:40px; height:40px; margin-left:20px; margin-top: 7px; float:left; background: red; border-radius: 48px "> 
+                                        <h:commandLink action="#{control.saveDBlikeunlike(1, item.picStatusId)}"><i class="fas fa-grin-hearts" style="  font-size: 40px; color:#FFD700" />
+
+
+
+                                        </h:commandLink>
+                                    </div>
+                                    <div  style="width:40px; height:40px; margin-left:20px; margin-top: 7px; float:left; ">
+                                        <h:commandLink action="#{control.saveDBlikeunlike(2, item.picStatusId)}" > <i class="fas fa-heart" style=" font-size: 40px; color:red" /> </h:commandLink>
+                                    </div>
+                                    <div  style="width:40px; height:40px; margin-left:20px; margin-top: 7px; float:left; "> 
+                                        <h:commandLink action="#{control.saveDBlikeunlike(3, item.picStatusId)}" ><i class="fas fa-heart-broken" style=" font-size: 40px; color:red" /></h:commandLink>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="date1" style="width:150px; height:30px; margin: 0 250px"><h:outputText style="  color: white; font:bold 10px thoma" value="#{item.dateTime}" /></div>
+
+                        </div>
+
+
+
+                    </ui:fragment>
+
+                </c:forEach>
+
+
+            </div>
+
+
+
+
+        </h:form>
+
+
+
+    </body>
+</html>
